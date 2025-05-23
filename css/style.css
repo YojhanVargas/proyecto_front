@@ -27,20 +27,6 @@ header {
 }
 
 
-/* Estilo de nube en la parte inferior del header 
-header::after {
-    content: '';
-    position: absolute;
-    bottom: -50px;
-    left: 0;
-    width: 90%;
-    height: 80px;
-    background: #4a90e2;
-    border-radius: 100% 100% 0 0;
-    z-index: 1;
-}
-    */
-
 .logo img {
     width: 150px;
     margin-bottom: 20px;
@@ -233,24 +219,12 @@ nav a:hover {
     margin: 0 auto; /* Centrar horizontalmente */
     margin-bottom: 20px;
     max-width: 600px; /* Limitar el ancho máximo */
-    position: relative;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     display: inline-block;
     animation: shadowPulse 2s infinite; /* Animación de sombra parpadeante */
 }
 
-.title::before {
-    content: "";
-    position: absolute;
-    top: -15px; /* Ajustado para el nuevo tamaño */
-    left: -15px; /* Ajustado para el nuevo tamaño */
-    width: 65px; /* Tamaño del decorado reducido */
-    height: 65px;
-    background: radial-gradient(circle, #fff306 0%, rgba(255, 255, 255, 0) 50%);
-    border-radius: 50%;
-    z-index: 1;
-}
 
 .title::after {
     content: "";
@@ -364,6 +338,10 @@ p1:hover::after {
 }
 /* Footer */
 footer {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin-top: 15%;
     background-color: #4a91e277;
     padding: 5px 0; /* Reducir el padding para hacer el footer más compacto */
     color: #fff;
@@ -371,6 +349,7 @@ footer {
 }
 
 .footer-container {
+    
     display: flex;
     justify-content: space-around;
     align-items: center; /* Centrar verticalmente las secciones */
@@ -403,7 +382,7 @@ footer {
 .social-icons {
     display: flex;
     justify-content: center;
-    margin-top: -40px; /* Reducir el margen superior para acercar los íconos al logo */
+    margin-top: px; /* Reducir el margen superior para acercar los íconos al logo */
 }
 
 .social-icons a {
@@ -522,18 +501,37 @@ main {
 }
 
 .caja__trasera {
-    width: 100%; /* Aumenta el ancho de la caja */
-    padding: 20px 30px; /* Aumenta el espacio interior */
+    position: relative;
+    width: 100%;
+    padding: 20px 30px;
     display: flex;
     justify-content: center;
-    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(80px);
-    background: rgba(0, 47, 108, 0.95); /* Azul oscuro con opacidad alta */
-    background-image: url('../css/image/cancha\ con\ balon.jpg');
+    background: rgba(0, 47, 108, 0.95);
     background-size: cover;
     background-position: center;
-    border-radius: 15px; /* Bordes redondeados */
-    margin: auto; /* Centrar la caja */
+    border-radius: 15px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.caja__trasera::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url('../css/image/cancha con balon.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+.caja__trasera > * {
+    position: relative;
+    z-index: 1;
 }
 
 .caja__trasera div {
@@ -616,7 +614,10 @@ main {
 }
 
 .contenedor__login-register form {
+    margin-bottom: 25%;
+    height: 420px;
     width: 100%;
+    overflow-y: auto;
     padding: 40px 20px;
     background: #ffffff;
     position: absolute;
